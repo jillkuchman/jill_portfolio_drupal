@@ -1,10 +1,54 @@
 <?php
 
+    function dna_menu(){
+        $items = array();
+        $items['dna'] = array(
+            'title' => 'DNA Sequencer',
+            'page callback' => 'drupal_get_form',
+            'page arguments' => array('dna_form'),
+            'access callback' => TRUE,
+            'type' => MENU_NORMAL_ITEM,
+        );
+        $items['dna_success'] = array(
+            'title' => 'Success',
+            'page callback' => 'dna_success',
+            'access callback' => TRUE,
+            'type' => MENU_CALLBACK,
+        );
+        return $items;
+    }
+
+    function dna_form(){
+        $form['dna_input'] = array(
+            '#type' => 'textfield',
+            '#element_validate' => array('element_validate_valid_dna_input'),
+            '#required' => TRUE,
+        );
+        $form['submit'] = array(
+            '#type' => 'submit',
+            '#value' => 'SEQUENCE!',
+        );
+        return $form;
+    }
+
+    function dna_form_submit($form, &$form_state){
+        $input = $form_state['values']['dna_input'];
+        $output = dna_sequencer($input);
+        $_SESSION['output'] = $output;
+        $form_state['redirect'] = 'dna_success';
+    }
+
+    function dna_success() {
+        $output = $_SESSION['output'];
+        return $output;
+    }
+
     function dna_sequencer($input){
+        $input_uc = strtoupper($input);
         $output = '';
 
         for ($i = 0; $i < strlen($input); $i++){
-            switch ($input[$i]) {
+            switch ($input_uc[$i]) {
                 case 'A':
                     $output .= 'T';
                     break;
@@ -18,8 +62,22 @@
                     $output .= 'C';
                     break;
                 default:
-                    $output = '';
+                    $output .= '';
             }
         }
+
         return $output;
+    }
+
+    function element_validate_valid_dna_input($element){
+        $validate = TRUE;
+        $element_input = strtoupper($element['#value']);
+        for ($i = 0; $i < strlen($element_input); $i++){
+            if ($element_input[$i] != 'A' && $element_input[$i] != 'T' && $element_input[$i] != 'C' && $element_input[$i] != 'G'){
+                $validate = FALSE;
+            }
+        }
+        if (!$validate){
+            form_error($element, t('Input must only contain nucleotides that exist (A, T, C, G)'));
+        }
     }
