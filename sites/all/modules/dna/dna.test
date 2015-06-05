@@ -1,6 +1,6 @@
 <?php
 
-    class dnaSequencerTest extends DrupalUnitTestCase {
+    class testDNASequencer extends DrupalUnitTestCase {
 
         public static function getInfo() {
             return array(
@@ -50,5 +50,26 @@
 
     }
 
+    class testDNAFunctional extends DrupalWebTestCase{
+        public static function getInfo() {
+            return array(
+                'name' => 'DNA Tests',
+                'description' => 'Tests the DNA module.',
+                'group' => 'Epicodus Assessment Tests',
+            );
+        }
+        public function setUp() {
+            parent::setUp(array('dna'));
+            $info['dna_input'] = 'GATTACA';
+            $this->drupalPost('dna', $info, t('Go'));
+
+        }
+
+        public function testDNA() {
+            $this->drupalGet('dna_success');
+            $this->assertText('CTAATGT', 'DNA successfully sequenced.');
+        }
+
+    }
 
 ?>
