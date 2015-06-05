@@ -27,7 +27,9 @@
             $message = 'An input of G returns C';
             $this->assertIdentical($result, 'C');
 
-
+            $result = dna_sequencer('AA');
+            $message = 'An input of AA returns TT';
+            $this->assertIdentical($result, 'TT');
         }
 
     }

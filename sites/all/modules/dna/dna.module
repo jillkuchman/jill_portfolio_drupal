@@ -4,7 +4,7 @@
         $output = '';
 
         for ($i = 0; $i < strlen($input); $i++){
-            switch ($input) {
+            switch ($input[$i]) {
                 case 'A':
                     $output .= 'T';
                     break;
