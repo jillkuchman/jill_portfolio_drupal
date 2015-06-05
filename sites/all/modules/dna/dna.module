@@ -2,33 +2,24 @@
 
     function dna_sequencer($input){
         $output = '';
-        switch ($input) {
-            case 'A':
-                $output = 'T';
-                break;
-            case 'T':
-                $output = 'A';
-                break;
-            case 'C':
-                $output = 'G';
-                break;
-            default:
-                $output = $input;
+
+        for ($i = 0; $i < strlen($input); $i++){
+            switch ($input) {
+                case 'A':
+                    $output .= 'T';
+                    break;
+                case 'T':
+                    $output .= 'A';
+                    break;
+                case 'C':
+                    $output .= 'G';
+                    break;
+                case 'G':
+                    $output .= 'C';
+                    break;
+                default:
+                    $output = '';
+            }
         }
         return $output;
-        // $input_array = explode('', $input);
-        // $output_array = array();
-        //
-        // foreach($input_array as $letter){
-        //     switch ($letter) {
-        //         case 'A':
-        //             array_push($output_array, 'T');
-        //             break;
-        //         case 'T':
-        //             array_push($output_array, 'A');
-        //             break;
-        //     }
-        // }
-        // $output = implode('', $output_array);
-        // return $output;
     }
