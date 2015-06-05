@@ -6,6 +6,12 @@
             case 'A':
                 $output = 'T';
                 break;
+            case 'T':
+                $output = 'A';
+                break;
+            case 'C':
+                $output = 'G';
+                break;
             default:
                 $output = $input;
         }
