@@ -1,5 +1,28 @@
 <?php
 
     function dna_sequencer($input){
-        return 'T';
+        $output = '';
+        switch ($input) {
+            case 'A':
+                $output = 'T';
+                break;
+            default:
+                $output = $input;
+        }
+        return $output;
+        // $input_array = explode('', $input);
+        // $output_array = array();
+        //
+        // foreach($input_array as $letter){
+        //     switch ($letter) {
+        //         case 'A':
+        //             array_push($output_array, 'T');
+        //             break;
+        //         case 'T':
+        //             array_push($output_array, 'A');
+        //             break;
+        //     }
+        // }
+        // $output = implode('', $output_array);
+        // return $output;
     }
