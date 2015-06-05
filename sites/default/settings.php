@@ -213,15 +213,15 @@
  * @endcode
  */
 $databases = array (
-  'default' => 
+  'default' =>
   array (
-    'default' => 
+    'default' =>
     array (
       'database' => 'jill_portfolio_drupal',
       'username' => 'portfolio_user',
       'password' => 'portfolio_user',
-      'host' => 'localhost',
-      'port' => '',
+      'host' => '127.0.0.1',
+      'port' => '8889',
       'driver' => 'mysql',
       'prefix' => '',
     ),
@@ -579,3 +579,7 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
  * Remove the leading hash signs to disable.
  */
 # $conf['allow_authorize_operations'] = FALSE;
+
+error_reporting(E_ALL);
+ini_set('display_errors', TRUE);
+ini_set('display_startup_errors', TRUE);

@@ -1,0 +1,27 @@
+<?php
+
+    class dnaSequencerTest extends DrupalUnitTestCase {
+
+        public static function getInfo() {
+            return array(
+                'name' => 'DNA Sequencer Unit Test',
+                'description' => 'Tests that the dna_sequencer function translates numbers into words.',
+                'group' => 'Epicodus Assessment',
+            );
+        }
+
+        function test_dna_sequencer(){
+            $result = dna_sequencer('A');
+            $message = 'An input of A returns T';
+            $this->assertIdentical($result, 'T');
+
+            $result = dna_sequencer('T');
+            $message = 'An input of T returns A';
+            $this->assertIdentical($result, 'A');
+
+        }
+
+    }
+
+
+?>

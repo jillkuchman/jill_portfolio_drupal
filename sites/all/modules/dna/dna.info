@@ -1,0 +1,7 @@
+name = DNA Sequencer
+description = Sequences a genome by interpreting input into output.
+package = Epicodus Assessment
+core = 7.x
+dependencies = simpletest
+files[] = dna.test
+files[] = dna.module

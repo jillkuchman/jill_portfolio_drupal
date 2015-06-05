@@ -1,0 +1,5 @@
+<?php
+
+    function dna_sequencer($input){
+        return 'T';
+    }
